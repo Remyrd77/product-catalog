@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+      <ion-title>
+        Title
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+    <ion-searchbar [debounce]="100" show-clear-button="focus" placeholder="Search Products" (ionChange)="handleChange($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let result of results">
+        <ion-label>{{ result }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let product of products" (click)="showProductDetails(product.id)">
+      <ion-card>
+        <ion-card-content>
+          <img alt="{{product.name}}" src="{{product.image}}" />
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                {{product.name}}
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-label>
+      &#169;2022 Robin Das
+    </ion-label>
+  </ion-toolbar>
+</ion-footer>
